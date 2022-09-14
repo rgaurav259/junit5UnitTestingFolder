@@ -1,4 +1,4 @@
-package com.junitpackage.junit5.assertions.assertTrue;
+package com.junitpackage.junit5.assertions.assertFalse;
 
 import com.junitpackage.junit5.model.Book;
 import com.junitpackage.junit5.service.BookService;
@@ -6,51 +6,39 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AssertTrueMessage {
+public class AssertFalseDemo {
+
+
+
 
     //if we comments the added book then all test cases passed
 
     @Test
-    public void assertTrueWithNoMessage(){
+    public void assertFalseWithNoMessage(){
+        BookService bookService= new BookService();
+
+        Book book1= new Book("1","java","ghgjhgjhg");
+        bookService.addBook(book1);
+
+        List<Book> bookList = bookService.books();
+        assertFalse(bookList.isEmpty());
+
+
+
+    }
+
+    @Test
+    public void assertFalseWithMessage(){
         BookService bookService= new BookService();
 
         Book book1= new Book("1","java","ghgjhgjhg");
         //bookService.addBook(book1);
 
         List<Book> bookList = bookService.books();
-        assertTrue(bookList.isEmpty());
-
-
-
-    }
-
-        @Test
-        public void assertTrueWithMessage(){
-            BookService bookService= new BookService();
-
-            Book book1= new Book("1","java","ghgjhgjhg");
-            bookService.addBook(book1);
-
-            List<Book> bookList = bookService.books();
-            assertTrue(bookList.isEmpty(),"list of book is not empty");
-
-
-
-        }
-
-
-
-    @Test
-    public void assertTrueWithMessageSupplier(){
-        BookService bookService= new BookService();
-
-        Book book1= new Book("1","java","ghgjhgjhg");
-        bookService.addBook(book1);
-
-        List<Book> bookList = bookService.books();
-        assertTrue(bookList.isEmpty(),()-> "list of book is not empty");
+        assertFalse(bookList.isEmpty(),"list of book is  empty");
 
 
 
@@ -59,28 +47,47 @@ public class AssertTrueMessage {
 
 
     @Test
-    public void assertTrueWithBooleanSupplierAndNoMessage(){
+    public void assertFalseWithMessageSupplier(){
         BookService bookService= new BookService();
 
         Book book1= new Book("1","java","ghgjhgjhg");
         bookService.addBook(book1);
 
         List<Book> bookList = bookService.books();
-        assertTrue(()-> bookList.isEmpty());
+        assertFalse(bookList.isEmpty(),()-> "list of book is not empty");
+
+
+
+    }
+
+
+
+    @Test
+    public void assertFalseWithBooleanSupplierAndNoMessage(){
+        BookService bookService= new BookService();
+
+        Book book1= new Book("1","java","ghgjhgjhg");
+        bookService.addBook(book1);
+
+        List<Book> bookList = bookService.books();
+        assertFalse(()-> bookList.isEmpty());
 
 
 
     }
 
     @Test
-    public void assertTrueWithBooleanSupplierAndMessage(){
+    public void assertFalseWithBooleanSupplierAndMessage(){
         BookService bookService= new BookService();
 
         Book book1= new Book("1","java","ghgjhgjhg");
         bookService.addBook(book1);
 
         List<Book> bookList = bookService.books();
-        assertTrue(()-> bookList.isEmpty(),"list of book is not empty");
+        assertFalse(()-> bookList.isEmpty(),"list of book is not empty");
 
     }
+
+
 }
+

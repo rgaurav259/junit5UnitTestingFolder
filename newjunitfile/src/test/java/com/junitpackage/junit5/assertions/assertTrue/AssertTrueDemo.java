@@ -19,7 +19,7 @@ public class AssertTrueDemo {
         bookService.addBook(book1);
 
         List<Book> bookList = bookService.books();
-        assertTrue(bookList.isEmpty());
+        assertTrue(!bookList.isEmpty());
 
 
 
